@@ -13,9 +13,11 @@ import com.br.bufalo.template.repository.SampleRepository;
 import com.br.bufalo.template.service.SampleService;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.transaction.annotation.Transactional;
 
 @Log4j2
 @Service
+@Transactional
 public class SampleServiceImpl implements SampleService {
 
     private final SampleRepository repository;

@@ -34,7 +34,7 @@ public class SampleController {
     }
 
     @GetMapping("/{id}")
-    List<SampleDto> findSamples() {
+    List<SampleDto> findSamples(@PathVariable Long id) {
         List<Sample> entities = this.service.findSamples();
         return entities.stream().map(Sample::toDto).toList();
     }

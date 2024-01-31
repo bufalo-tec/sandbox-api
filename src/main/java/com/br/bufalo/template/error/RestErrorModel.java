@@ -1,7 +1,12 @@
 package com.br.bufalo.template.error;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Setter
+@Getter
 public class RestErrorModel {
     private String errorMessage;
     private Date errorTime;
@@ -11,19 +16,4 @@ public class RestErrorModel {
         this.errorTime = new Date();
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
-    public Date getErrorTime() {
-        return errorTime;
-    }
-
-    public void setErrorTime(Date errorTime) {
-        this.errorTime = errorTime;
-    }
 }
