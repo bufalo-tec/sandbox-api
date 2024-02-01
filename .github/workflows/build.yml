@@ -1,4 +1,4 @@
-name: Build
+name: SonarQube
 on:
   workflow_dispatch:
 
@@ -7,29 +7,29 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    permissions: read-all
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
           java-version: 17
-#      - name: Cache SonarQube packages
-#        uses: actions/cache@v1
-#        with:
-#          path: ~/.sonar/cache
-#          key: ${{ runner.os }}-sonar
-#          restore-keys: ${{ runner.os }}-sonar
-#      - name: Cache Maven packages
-#        uses: actions/cache@v1
-#        with:
-#          path: ~/.m2
-#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: ${{ runner.os }}-m2
+          distribution: 'temurin'
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+        run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -DSkipTests \
           -Dsonar.projectKey=sandbox-api \
           -Dsonar.projectName='sandbox-api' \
@@ -37,5 +37,4 @@ jobs:
           -Dsonar.host.url=https://evolving-racer-currently.ngrok-free.app \
           -Dsonar.token=sqp_e07c170c44e1184872ba69d4456b26af4a03d9e1
 
-
-#        sqp_e07c170c44e1184872ba69d4456b26af4a03d9e1
+#sqp_e07c170c44e1184872ba69d4456b26af4a03d9e1
