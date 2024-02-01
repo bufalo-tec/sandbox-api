@@ -12,3 +12,6 @@ jobs:
           fetch-depth: 0
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
+          SONAR_HOST_URL: https://evolving-racer-currently.ngrok-free.app
