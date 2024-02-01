@@ -29,12 +29,13 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -DSkipTests \
           -Dsonar.projectKey=sandbox-api \
           -Dsonar.projectName='sandbox-api' \
           -Dsonar.organization=bufalo-tec \
-          -Dsonar.host.url=https://evolving-racer-currently.ngrok-free.app \
           -Dsonar.token=sqp_e07c170c44e1184872ba69d4456b26af4a03d9e1
 
 #sqp_e07c170c44e1184872ba69d4456b26af4a03d9e1
