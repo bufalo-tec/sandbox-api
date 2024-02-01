@@ -32,7 +32,7 @@ jobs:
         run: mvn clean verify sonar:sonar \
           -Dsonar.projectKey=sandbox-api \
           -Dsonar.projectName='sandbox-api' \
-          -Dsonar.host.url=https://evolving-racer-currently.ngrok-free.app \
+          -Dsonar.host.url=https://fc0e-2804-7f0-6940-f8db-8bce-8c9c-6ccd-cb4b.ngrok-free.app \
           -Dsonar.token=sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
 
 #sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
