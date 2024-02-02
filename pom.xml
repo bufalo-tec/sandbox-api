@@ -18,7 +18,7 @@
 	<properties>
 		<java.version>17</java.version>
 
-		<sonar.host.url>localhost:9000</sonar.host.url>
+		<sonar.host.url>https://ba02-2804-7f0-6940-f8db-f69f-4e03-ca79-dff8.ngrok-free.app</sonar.host.url>
 	</properties>
 
 	<dependencies>
