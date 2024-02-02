@@ -1,38 +1,38 @@
-name: SonarQube
-on:
-  workflow_dispatch:
-
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'temurin'
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
-        run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=sandbox-api \
-          -Dsonar.projectName='sandbox-api' \
-          -Dsonar.host.url=https://fc0e-2804-7f0-6940-f8db-8bce-8c9c-6ccd-cb4b.ngrok-free.app \
-          -Dsonar.token=sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
+#name: SonarQube
+#on:
+#  workflow_dispatch:
+#
+#jobs:
+#  build:
+#    name: Build
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 20
+#    steps:
+#      - uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+#      - name: Set up JDK 17
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: 17
+#          distribution: 'temurin'
+#      - name: Cache SonarCloud packages
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.sonar/cache
+#          key: ${{ runner.os }}-sonar
+#          restore-keys: ${{ runner.os }}-sonar
+#      - name: Cache Maven packages
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.m2
+#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: ${{ runner.os }}-m2
+#      - name: Build and analyze
+#        run: mvn clean verify sonar:sonar \
+#          -Dsonar.projectKey=sandbox-api \
+#          -Dsonar.projectName='sandbox-api' \
+#          -Dsonar.host.url=https://fc0e-2804-7f0-6940-f8db-8bce-8c9c-6ccd-cb4b.ngrok-free.app \
+#          -Dsonar.token=sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
 
 #sqp_6c7c7a3dc62f44298b62e448b09e70390ca1a21e
