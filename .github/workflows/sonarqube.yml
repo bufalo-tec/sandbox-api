@@ -6,6 +6,22 @@ on:
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+#    services:
+#      postgres:
+#        image: postgres:13-alpine
+#        env:
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASSWORD: postgres
+#          POSTGRES_DB: postgres
+#        options: >-
+#          --mount type=tmpfs,destination=/var/lib/postgresql/data
+#          --health-cmd pg_isready
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+#        ports:
+#          - 5433:5432
 
     steps:
       - name: Checkout Repository
