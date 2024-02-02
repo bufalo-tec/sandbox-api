@@ -1,21 +1,3 @@
-#on:
-#  workflow_dispatch:
-#
-#name: SonarQubev2
-#jobs:
-#  sonarqube:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#        with:
-#          # Disabling shallow clones is recommended for improving the relevancy of reporting
-#          fetch-depth: 0
-#      - name: SonarQube Scan
-#        uses: sonarsource/sonarqube-scan-action@master
-#        env:
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
 name: SonarQube Analysis v3
 
 on:
@@ -42,6 +24,3 @@ jobs:
         run: mvn sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-
-#          sqp_0b50a438fbd10512d754a81972a36c94f5d6ac95
